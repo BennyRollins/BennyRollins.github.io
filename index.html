@@ -37,66 +37,37 @@
         }
         return gk_fileData[filename] || "";
         }
-        </script><!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Catalogue Progress Tracker</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-</head>
-<body class="bg-gray-100 flex items-center justify-center h-screen">
-  <div class="bg-white p-6 rounded-lg shadow-lg w-full max-w-md">
-    <h1 class="text-2xl font-bold mb-4 text-center">Catalogue Progress Tracker</h1>
-    <p class="text-gray-600 mb-2">Total Pages: 48</p>
-    <div class="w-full bg-gray-200 rounded-full h-6 mb-4">
-      <div id="progressBar" class="bg-blue-500 h-6 rounded-full text-white text-center text-sm leading-6" style="width: 0%">
-        <span id="progressText">0%</span>
-      </div>
-    </div>
-    <div class="flex items-center space-x-2">
-      <input id="pageInput" type="number" min="0" max="48" placeholder="Enter completed pages (0-48)" class="w-full p-2 border rounded">
-      <button id="updateButton" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Update</button>
-    </div>
-    <p id="errorMessage" class="text-red-500 text-sm mt-2 hidden">Please enter a valid number (0-48).</p>
-    <p class="text-gray-500 text-sm mt-4">Enter the number of completed pages to update the progress bar.</p>
-  </div>
-  <script>
-    const totalPages = 48;
-    const progressBar = document.getElementById('progressBar');
-    const progressText = document.getElementById('progressText');
-    const pageInput = document.getElementById('pageInput');
-    const updateButton = document.getElementById('updateButton');
-    const errorMessage = document.getElementById('errorMessage');
+        </script>```html
+     <!DOCTYPE html>
+     <html lang="en">
+     <head>
+       <meta charset="UTF-8">
+       <meta name="viewport" content="width=device-width, initial-scale=1.0">
+       <title>Catalogue Progress Tracker</title>
+       <script src="https://cdn.tailwindcss.com"></script>
+     </head>
+     <body class="bg-gray-100 flex items-center justify-center h-screen">
+       <div class="bg-white p-6 rounded-lg shadow-lg w-full max-w-md">
+         <h1 class="text-2xl font-bold mb-4 text-center">Catalogue Progress Tracker</h1>
+         <p class="text-gray-600 mb-2">Total Pages: 48</p>
+         <div class="w-full bg-gray-200 rounded-full h-6 mb-4">
+           <div id="progressBar" class="bg-blue-500 h-6 rounded-full text-white text-center text-sm leading-6" style="width: 0%">
+             <span id="progressText">0%</span>
+           </div>
+         </div>
+         <p class="text-gray-500 text-sm mt-4">Progress is updated manually by the designer.</p>
+       </div>
+       <script>
+         const totalPages = 48;
+         const completedPages = 13; // Update this number manually (e.g., 24 pages completed)
+         const progressBar = document.getElementById('progressBar');
+         const progressText = document.getElementById('progressText');
 
-    // Load saved progress from localStorage
-    let completedPages = localStorage.getItem('completedPages') ? parseInt(localStorage.getItem('completedPages')) : 0;
-    updateProgressBar(completedPages);
-
-    function updateProgressBar(pages) {
-      const percentage = (pages / totalPages) * 100;
-      progressBar.style.width = `${percentage}%`;
-      progressText.textContent = `${Math.round(percentage)}%`;
-      localStorage.setItem('completedPages', pages);
-    }
-
-    updateButton.addEventListener('click', () => {
-      const pages = parseInt(pageInput.value);
-      if (isNaN(pages) || pages < 0 || pages > totalPages) {
-        errorMessage.classList.remove('hidden');
-        return;
-      }
-      errorMessage.classList.add('hidden');
-      updateProgressBar(pages);
-      pageInput.value = ''; // Clear input
-    });
-
-    // Allow Enter key to trigger update
-    pageInput.addEventListener('keypress', (e) => {
-      if (e.key === 'Enter') {
-        updateButton.click();
-      }
-    });
-  </script>
-</body>
-</html>
+         // Calculate and display progress
+         const percentage = (completedPages / totalPages) * 100;
+         progressBar.style.width = `${percentage}%`;
+         progressText.textContent = `${Math.round(percentage)}%`;
+       </script>
+     </body>
+     </html>
+     ```
